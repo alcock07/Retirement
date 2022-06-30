@@ -1,0 +1,23 @@
+VERSION 1.0 CLASS
+BEGIN
+  MultiUse = -1  'True
+END
+Attribute VB_Name = "ThisWorkbook"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = True
+Private Sub Workbook_Open()
+'Dim ePASS$
+'
+'    Sheets("退職金計算").Activate
+'    Range("A1").Select
+'    ePASS$ = InputBox("退職計算にはパスワードが必要です", "退職計算への認証")
+'    If ePASS$ = "10472" Or ePASS$ = "torii5902" Then
+'    Else
+'        Call AP_END
+'    End If
+    Sheets("退職金計算").Activate
+    Range("G7").Select
+    
+End Sub
