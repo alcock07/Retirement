@@ -9,6 +9,6 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = True
 Private Sub Worksheet_SelectionChange(ByVal Target As Range)
 
-    Call ŽÐˆõ‘I‘ð
+'    Call ŽÐˆõ‘I‘ð
     
 End Sub
