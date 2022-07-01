@@ -13,6 +13,8 @@ Public Const USER = "User ID=sa;"
 Public Const PSWD = "Password=admin;"
 Public Const PSWD9 = "Password=ALCadmin!;"
 
+'Ž–‹ÆŠ‚ð‘I‘ð‚µ‚½Žž‚ÉŽÐˆõ–¼‚ðŽæ“¾
+
 Sub ƒR[ƒhŒŸõ()
     
     Dim cnA As New ADODB.Connection
@@ -35,7 +37,7 @@ Sub ƒR[ƒhŒŸõ()
     rsA.Open strSQL, cnA, adOpenStatic, adLockReadOnly
     i = 19
     If rsA.EOF = False Then
-        Range("AC19:AD47").ClearContents
+        Range("AC19:AD65").ClearContents
         Range("AB16") = 1
         rsA.MoveFirst
     End If
@@ -56,22 +58,6 @@ Sub ƒR[ƒhŒŸõ()
     End If
     
 End Sub
-
-Sub ŽÐˆõ‘I‘ð()
-
-    If Range("G7").Value = "" Or Range("G7").Value = 0 Then Exit Sub
-    If Range("G7").Value > 0 And Range("G7").Value <= 99999 Then
-        Call ƒ}ƒXƒ^[“Çž
-    Else
-        Range("X15").Value = "–¢“o˜^‚Å‚·"
-        Range("Y15").Value = ""
-        Range("X16").Value = 0
-        Range("X17").Value = 0
-        Range("X18").Value = ""
-        Range("X19").Value = ""
-    End If
-    
-End Sub
     
 Sub ƒ}ƒXƒ^[“Çž()
 Attribute ƒ}ƒXƒ^[“Çž.VB_ProcData.VB_Invoke_Func = " \n14"
@@ -88,8 +74,8 @@ Attribute ƒ}ƒXƒ^[“Çž.VB_ProcData.VB_Invoke_Func = " \n14"
     cnA.ConnectionString = MYPROVIDERE & MYSERVER & strDB & USER & PSWD
     cnA.Open
     
-    strSTN = Sheets("‘ÞE‹àŒvŽZ").Range("AD5").Value
-    strCD = Strings.Format(Sheets("‘ÞE‹àŒvŽZ").Range("G7").Value, "00000")
+    strSTN = Sheets("‘ÞE‹àŒvŽZ").Range("AD5").Value  'Ž–‹ÆŠ‹æ•ªiRH,RO,RT,TA,KAj
+    strCD = Strings.Format(Sheets("‘ÞE‹àŒvŽZ").Range("G7").Value, "00000") 'ŽÐˆõº°ÄÞ
     strSQL = ""
     strSQL = strSQL & "SELECT *"
     strSQL = strSQL & "  FROM KYUMTA"
@@ -98,22 +84,16 @@ Attribute ƒ}ƒXƒ^[“Çž.VB_ProcData.VB_Invoke_Func = " \n14"
     strSQL = strSQL & "  ORDER BY SCODE"
     rsA.Open strSQL, cnA, adOpenStatic, adLockReadOnly
     If rsA.EOF Then
-        Sheets("‘ÞE‹àŒvŽZ").Range("X15").Value = "–¢“o˜^‚Å‚·"
-        Sheets("‘ÞE‹àŒvŽZ").Range("Y15").Value = ""
-        Sheets("‘ÞE‹àŒvŽZ").Range("X16").Value = 0
-        Sheets("‘ÞE‹àŒvŽZ").Range("X17").Value = 0
-        Sheets("‘ÞE‹àŒvŽZ").Range("X18").Value = ""
-        Sheets("‘ÞE‹àŒvŽZ").Range("X19").Value = ""
+        Sheets("‘ÞE‹àŒvŽZ").Range("X15").Value = "–¢“o˜^‚Å‚·"  '–¼‘O
+        Sheets("‘ÞE‹àŒvŽZ").Range("X16").Value = 0  '–{‹‹
+        Sheets("‘ÞE‹àŒvŽZ").Range("X17").Value = 0  '‰Á‹‹
+        Sheets("‘ÞE‹àŒvŽZ").Range("X18").Value = "" '¶”NŒŽ“ú
+        Sheets("‘ÞE‹àŒvŽZ").Range("X19").Value = "" '“üŽÐ“ú
     Else
         If IsNull(rsA![SNAME]) Then
             Sheets("‘ÞE‹àŒvŽZ").Range("X15").Value = ""
         Else
             Sheets("‘ÞE‹àŒvŽZ").Range("X15").Value = Trim(rsA![SNAME])
-        End If
-        If IsNull(rsA![SEX]) Then
-            Sheets("‘ÞE‹àŒvŽZ").Range("Y15").Value = ""
-        Else
-            Sheets("‘ÞE‹àŒvŽZ").Range("Y15").Value = rsA![SEX]
         End If
         If IsNull(rsA![PAY1]) Then
             Sheets("‘ÞE‹àŒvŽZ").Range("X16").Value = ""
@@ -136,6 +116,8 @@ Attribute ƒ}ƒXƒ^[“Çž.VB_ProcData.VB_Invoke_Func = " \n14"
             Sheets("‘ÞE‹àŒvŽZ").Range("X19").Value = Format(rsA![DATE2], "yyyy/mm/dd")
         End If
     End If
+    
+    Call ‘ÞE‹àŒvŽZ
     
     If Not rsA Is Nothing Then
         If rsA.State = adStateOpen Then rsA.Close
