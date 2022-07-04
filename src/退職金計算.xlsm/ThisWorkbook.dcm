@@ -9,7 +9,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = True
 Private Sub Workbook_Open()
     
-    Sheets("ëﬁêEã‡åvéZ").Activate
+    Sheets("Main").Activate
     Range("G7").Select
     
 End Sub
